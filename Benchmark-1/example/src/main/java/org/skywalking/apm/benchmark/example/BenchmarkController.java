@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.sql.DataSource;
 import org.skywalking.apm.benchmark.example.entity.User;
@@ -29,13 +28,26 @@ public class BenchmarkController {
     public User selectUser(@PathVariable String id) throws SQLException {
         String value = jedis.get(id);
         if (value == null) {
-            Connection connection = dataSource.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT name FROM test WHERE test.a = ?");
-            preparedStatement.setString(1, "1");
-            ResultSet resultSet = preparedStatement.executeQuery();
-            resultSet.next();
-            jedis.set(id + ThreadLocalRandom.current().nextDouble(), resultSet.getString("name"));
-            return new User(id, resultSet.getString("name"));
+            Connection connection = null;
+            PreparedStatement preparedStatement = null;
+            try {
+                connection = dataSource.getConnection();
+                preparedStatement = connection.prepareStatement("SELECT name FROM test WHERE test.a = ?");
+                preparedStatement.setString(1, "1");
+                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                jedis.set(id + ThreadLocalRandom.current().nextDouble(), resultSet.getString("name"));
+                return new User(id, resultSet.getString("name"));
+            } finally {
+                
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+
+                if (connection != null) {
+                    connection.close();
+                }
+            }
         }
 
         return new User(id, value);

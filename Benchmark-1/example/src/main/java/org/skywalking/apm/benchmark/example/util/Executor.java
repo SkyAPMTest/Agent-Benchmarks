@@ -1,5 +1,6 @@
 package org.skywalking.apm.benchmark.example.util;
 
+import java.util.concurrent.ThreadLocalRandom;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,9 +27,13 @@ public class Executor {
 
     public void doExecute() {
         for (int i = 0; i < loopTimes; i++) {
-            int sum = 0;
-            for (int j = 0; j < 10; j++) {
+            double sum = 0;
+            for (int j = 0; j < 1000; j++) {
                 sum += j;
+                double total = sum * 1.0 / (j + 1) + i;
+                sum += total / (j + 1);
+                sum = (sum * 10000 / ThreadLocalRandom.current().nextFloat());
+                sum = Math.log10(sum) * ThreadLocalRandom.current().nextFloat() / ThreadLocalRandom.current().nextFloat();
             }
 
             try {

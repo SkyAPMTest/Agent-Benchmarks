@@ -20,6 +20,8 @@ public class DataSourceConfiguration {
         config.setJdbcUrl("jdbc:mysql://localhost:3306/test");
         config.setUsername("root");
         config.setPassword("root");
+        config.setMaximumPoolSize(500);
+        config.setMinimumIdle(10);
         return new HikariDataSource(config);
     }
 }

@@ -2,11 +2,11 @@ package redis.clients.jedis;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 import org.skywalking.apm.benchmark.example.util.Executor;
 
 public class Jedis {
 
-    private Map<String, String> cached = new HashMap<>();
 
     public Jedis(final String host) {
 
@@ -18,13 +18,12 @@ public class Jedis {
 
     public String set(final String key, String value) {
         Executor.Instance().doExecute();
-        cached.put(key, value);
         return value;
     }
 
     public String get(final String key) {
         Executor.Instance().doExecute();
-        return cached.get(key);
+        return key + ThreadLocalRandom.current().nextDouble();
     }
 
 }
