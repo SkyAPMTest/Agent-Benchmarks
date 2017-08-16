@@ -1,5 +1,5 @@
 # Agent-Benchmarks
-Somebody, who wants to use skywalking, has concerns about the performance of our auto-instrument agent. The applications, insides this repository, will be used to test performance of our agent.
+Somebody, who wants to use skywalking, has concerns about the performance of our auto-instrument agent. The applications, inside this repository, will be used to test performance of our agent.
 
 ## Baseline
 The baseline is running the benchmarks **without** skywalking agent. And provide these:
