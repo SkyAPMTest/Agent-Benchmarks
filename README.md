@@ -26,7 +26,7 @@ e.g. The network and config of mysql/redis server are effecting the client perfo
 ![Metrics data](https://github.com/sky-walking/page-resources/blob/master/3.2/performance/contrast_graph.png)
 
 #### Test Envrionment
-| Items        | Value           | 
+| Item       | Value           | 
 | ------------- |:-------------| 
 | **OS**     | CentOS Linux release 7.2.1511 (Core) | 
 | **CPU**      | 4  Intel(R) Core(TM) i5-4460  CPU @ 3.20GHz      | 
@@ -34,7 +34,7 @@ e.g. The network and config of mysql/redis server are effecting the client perfo
 
 
 #### Pressure metrics
-| Tables        | Are           | 
+| Item        | Value           | 
 | ------------- |:-------------| 
 | **Currency**    |500 | 
 |**Though Time**      | 10ms | 
