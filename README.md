@@ -31,7 +31,7 @@ We simulated 500 users to access the application, with 10ms thought time. Becaus
 
 ![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance/contrast_graph.png)
 
-The agent costs 12%, which is 3% of 4 Cores CPU, to collect 4000 trace segments per seconds and send them to our collector through network. This is a very high efficiency agent. As you known, nearly no single-process application can do this in a x86 server, except for something likes cache(redis)-proxy server. And for tps and response time, the agent effects nearly nothing. 
+The agent costs 12%, which is 3% of 4 Cores, to collect 4000 trace segments per seconds and send them to our collector through network. Clearly, skywalking agent is a very high efficiency agent. As you known, nearly no single-process application can do this in a x86 server, except for something likes cache(redis)-proxy server. And for tps and response time, the agent effects nearly nothing. 
 
 This means, even agent costs a little CPU in a high throughputs server, but wouldn't the effect performance during tracing.
 
