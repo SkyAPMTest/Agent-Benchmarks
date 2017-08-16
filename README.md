@@ -16,11 +16,11 @@ Agent Cost = `Running with agent` - `Baseline`
 
 ## Benchmarks
 ### Benchmark-1
-This is a very common Spring-based system, includes Spring Boot, Spring MVC, simulate-redis-client, simulate-mysql-client.
+This is a very common Spring-based system, includes Spring Boot, Spring MVC, simulate-redis-client, HikariCP connection pool(with simulate-mysql-client).
 
-Please noted: we used the **simulate-*-client** to simulate the client lib, instead the real client library, in order to avoid effections of server-side and network performance. 
+**Please notice**: we used the **simulate-*-client** to simulate the client lib, instead the real client library, in order to avoid effections of server-side and network performance. 
 
-e.g. The network and redis server config are effecting the client performance, but this is our testing purpose.
+e.g. The network and config of mysql/redis server are effecting the client performance, but this is our testing purpose.
 
 #### Test Result
 1. Baseline diagram
