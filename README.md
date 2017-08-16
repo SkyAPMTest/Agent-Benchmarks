@@ -4,7 +4,7 @@ Somebody, who wants to use skywalking, has concerns about the performance of our
 ## Baseline
 The baseline is running the benchmarks **without** skywalking agent. And provide these:
 * CPU: Percent of the running machine, we prefer to do this in physical machine.
-* TPS: Transaction per secondes.
+* TPS: Transaction per second.
 * Response Time. Unit: millisecond
 
 ## Running with agent
