@@ -23,8 +23,18 @@ This is a very common Spring-based system, includes Spring Boot, Spring MVC, sim
 e.g. The network and config of mysql/redis server are effecting the client performance, but this is our testing purpose.
 
 #### Test Result
-1. Baseline diagram
+![Metrics data](https://github.com/sky-walking/page-resources/blob/master/3.2/performance/contrast_graph.png)
 
-2. Running with agent diagram
+#### Test Envrionment
+| Items        | Value           | 
+| ------------- |:-------------| 
+| **OS**     | CentOS Linux release 7.2.1511 (Core) | 
+| **CPU**      | 4  Intel(R) Core(TM) i5-4460  CPU @ 3.20GHz      | 
+| **Memory** |16G     |  
 
-3. Agent Cost diagram
+
+#### Pressure metrics
+| Tables        | Are           | 
+| ------------- |:-------------| 
+| **Currency**    |500 | 
+|**Though Time**      | 10ms | 
