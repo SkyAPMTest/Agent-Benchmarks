@@ -23,18 +23,13 @@ This is a very common Spring-based system, includes Spring Boot, Spring MVC, sim
 e.g. The network and config of mysql/redis server are effecting the client performance, but this is our testing purpose.
 
 #### Test Result
+We used jmeter to run performance test in a physical machine, which has 4 Intel(R) Core(TM) i5-4460  CPU @ 3.20GH, 16G memory, and the OS is CentOS Linux release 7.2.1511 (Core).
+
+* High tps application
+
+We simulated 500 users to access the application, with 10ms thought time. Because our application is so fast, the result is about 4000 transactions per second during the test.
+
 ![Metrics data](https://github.com/sky-walking/page-resources/blob/master/3.2/performance/contrast_graph.png)
 
-#### Test Envrionment
-| Item       | Value           | 
-| ------------- |:-------------| 
-| **OS**     | CentOS Linux release 7.2.1511 (Core) | 
-| **CPU**      | 4  Intel(R) Core(TM) i5-4460  CPU @ 3.20GHz      | 
-| **Memory** |16G     |  
 
 
-#### Pressure metrics
-| Item        | Value           | 
-| ------------- |:-------------| 
-| **Currency**    |500 | 
-|**Though Time**      | 10ms | 
