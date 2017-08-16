@@ -27,7 +27,7 @@ e.g. The network and config of mysql/redis server are effecting the client perfo
 #### Test Report
 We used jmeter to run performance test in a physical machine, which has 4 Intel(R) Core(TM) i5-4460  CPU @ 3.20GH, 16G memory, and the OS is CentOS Linux release 7.2.1511 (Core).
 
-* High tps application
+* High (nearly impossible) throughputs
 
 We simulated 500 users to access the application, with 10ms thought time. Because our application is so fast, the result is about 4000 transactios per second during the test.
 
