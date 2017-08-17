@@ -1,7 +1,7 @@
 # Let's find out the performance
 Somebody, who wants to use skywalking, has concerns about the performance of our auto-instrument agent. The applications, inside this repository, will be used to test performance of our agent.
 
-All tests use **skywalking 3.2 javaagent**.
+All tests use **skywalking 3.2 javaagent**. We used jmeter to run performance test in a physical machine, which has 4 Intel(R) Core(TM) i5-4460  CPU @ 3.20GH, 16G memory, and the OS is CentOS Linux release 7.2.1511 (Core). 
 
 ## Baseline
 The baseline is running the benchmarks **without** skywalking agent. And provide these:
@@ -26,9 +26,6 @@ This is a very common Spring-based system, which includes Spring Boot, Spring MV
 
 e.g. The network and config of mysql/redis server are effecting the client performance, but this is our testing purpose.
 
-#### Test Report
-We used jmeter to run performance test in a physical machine, which has 4 Intel(R) Core(TM) i5-4460  CPU @ 3.20GH, 16G memory, and the OS is CentOS Linux release 7.2.1511 (Core). 
-
 **High (nearly impossible) throughputs**
 
 We simulated 500 users to access the application, with 10ms thought time. Because our application is so fast, the result is about more than 5000 transactions per second during the test.
@@ -42,3 +39,16 @@ This means, even agent costs a little CPU in a high throughputs server, but woul
 To be honest, a single instance of most applications is just running in 100-1200 tps, as I known, even in the powerful Chinese telecom system or e-commerce system. So, you **shouldn't have any concern** about performance for using our agent to trace your application.
 
 [Go to the details of CPU, memory, tps and response time graph](Benchmark-1)
+
+### Benchmark-2
+* [Source codes](https://github.com/sky-walking/Agent-Benchmarks/tree/master/Benchmark-2/example)
+
+The application is similar with benchmark-1, but we did some adjustments, to make it more reality. As I said, benchmark-1 is just for proving of limitation. So, we simulated 300 users to access the application, and keep the tps near 1000, which is also **very high**. The CPU cost clearly is less then before, which is only **6%**.
+
+![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-2/contrast_graph.png)
+
+You can see, we wouldn't effect the tps and reponse time either. 
+
+**Again, don't worry about the performance of our agent. Trace your applications as you need.**
+
+[Go to the details of CPU, memory, tps and response time graph](Benchmark-2)
