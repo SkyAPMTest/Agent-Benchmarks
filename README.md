@@ -49,6 +49,6 @@ The application is similar with benchmark-1, but we did some adjustments, to mak
 
 You can see, we wouldn't effect the tps and reponse time either. 
 
-**Again, don't worry about the performance of our agent. Trace your applications as you need.**
-
 [Go to the details of CPU, memory, tps and response time graph](Benchmark-2)
+
+**Again, don't worry about the performance of our agent. Trace your applications as you need.**
