@@ -24,7 +24,7 @@ This is a very common Spring-based system, which includes Spring Boot, Spring MV
 
 **Please notice**: we used the **simulate-*-client** to simulate the client lib, instead the real client library, in order to avoid effections of server-side and network performance. 
 
-e.g. The network and config of mysql/redis server are effecting the client performance, but this is our testing purpose.
+e.g. The network and config of mysql/redis server are effecting the client performance, but this isn't our testing purpose.
 
 **High (nearly impossible) throughputs**
 
