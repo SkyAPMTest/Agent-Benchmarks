@@ -1,5 +1,5 @@
 # Let's find out the performance
-Somebody, who wants to use skywalking, has concerns about the performance of our auto-instrument agent. The applications, inside this repository, will be used to test performance of our agent.
+Somebody, who wants to use [skywalking](https://github.com/wu-sheng/sky-walking), has concerns about the performance of our auto-instrument agent. The applications, inside this repository, will be used to test performance of our agent.
 
 All tests use **skywalking 3.2 javaagent**. We used jmeter to run performance test in a physical machine, which has 4 Intel(R) Core(TM) i5-4460  CPU @ 3.20GH, 16G memory, and the OS is CentOS Linux release 7.2.1511 (Core). 
 
