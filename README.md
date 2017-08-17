@@ -31,7 +31,7 @@ All test results based on skywalking 3.2 javaagent.
 
 **High (nearly impossible) throughputs**
 
-We simulated 500 users to access the application, with 10ms thought time. Because our application is so fast, the result is about more than 5000 transactios per second during the test.
+We simulated 500 users to access the application, with 10ms thought time. Because our application is so fast, the result is about more than 5000 transactions per second during the test.
 
 ![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-1/contrast_graph.png)
 
