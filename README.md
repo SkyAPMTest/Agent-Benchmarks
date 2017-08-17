@@ -25,7 +25,9 @@ This is a very common Spring-based system, which includes Spring Boot, Spring MV
 e.g. The network and config of mysql/redis server are effecting the client performance, but this is our testing purpose.
 
 #### Test Report
-We used jmeter to run performance test in a physical machine, which has 4 Intel(R) Core(TM) i5-4460  CPU @ 3.20GH, 16G memory, and the OS is CentOS Linux release 7.2.1511 (Core).
+We used jmeter to run performance test in a physical machine, which has 4 Intel(R) Core(TM) i5-4460  CPU @ 3.20GH, 16G memory, and the OS is CentOS Linux release 7.2.1511 (Core). 
+
+All test results based on skywalking 3.2 javaagent.
 
 * High (nearly impossible) throughputs
 
