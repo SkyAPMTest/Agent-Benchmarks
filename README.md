@@ -43,7 +43,7 @@ To be honest, a single instance of most applications is just running in 100-1200
 ### Benchmark-2
 * [Source codes](https://github.com/sky-walking/Agent-Benchmarks/tree/master/Benchmark-2/example)
 
-The application is similar with benchmark-1, but we did some adjustments, to make it more reality. As I said, benchmark-1 is just for proving of limitation. So, we simulated 300 users to access the application, and keep the tps near 1000, which is also **very high**. The CPU cost clearly is less then before, which is only **6%**.
+The application is similar with benchmark-1, but we did some adjustments, to make it more reality. As I said, benchmark-1 is just for proving of limitation. So, we simulated 300 users to access the application, and keep the tps near 1000, which is also **very high**. The CPU cost clearly is less than before, which is only **6%**.
 
 ![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-2/contrast_graph.png)
 
