@@ -23,7 +23,7 @@ public class Jedis {
 
     public String get(final String key) {
         Executor.Instance().doExecute();
-        return key + ThreadLocalRandom.current().nextDouble();
+        return null;
     }
 
 }
