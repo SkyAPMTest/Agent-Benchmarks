@@ -29,15 +29,16 @@ We used jmeter to run performance test in a physical machine, which has 4 Intel(
 
 All test results based on skywalking 3.2 javaagent.
 
-* High (nearly impossible) throughputs
+**High (nearly impossible) throughputs**
 
-We simulated 500 users to access the application, with 10ms thought time. Because our application is so fast, the result is about 4000 transactios per second during the test.
+We simulated 500 users to access the application, with 10ms thought time. Because our application is so fast, the result is about more than 5000 transactios per second during the test.
 
-![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance/contrast_graph.png)
+![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-1/contrast_graph.png)
 
-The agent costs 12%, which is 3% of 4 Cores, to collect 4000 trace segments per second and send them to our collector through network. Clearly, skywalking agent is a very high efficiency agent. As you known, nearly no single-process application can do this in a x86 server, except for something likes cache(redis)-proxy server. And for tps and response time, the agent effects nearly nothing. 
+The agent increases **10%** CPU cost in a 220%+ CPU cost application, **without needing any sampling mechanism**, to collect 5000+ trace segments per second and send them to our collector through network. Clearly, skywalking agent is a very high efficiency agent. As you known, nearly no single-process application can do this in a x86 server, except for something likes cache(redis)-proxy server. And for tps and response time, the agent effects nearly nothing. 
 
 This means, even agent costs a little CPU in a high throughputs server, but wouldn't effect performance during tracing.
 
 To be honest, a single instance of most applications is just running in 100-1200 tps, as I known, even in the powerful Chinese telecom system or e-commerce system. So, you **shouldn't have any concern** about performance for using our agent to trace your application.
 
+[Go to the details of CPU, memory, tps and response time graph](Benchmark-1)
