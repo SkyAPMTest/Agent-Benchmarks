@@ -52,7 +52,7 @@ You can see, we wouldn't effect the tps and reponse time either.
 [Go to the details of CPU, memory, tps and response time graph for benchmark-2](Benchmark-2)
 
 ## Paranoea benchmarks
-Why called `Paranoea` benchmarks? All these benchmarks are from @ascrutae suggestions, I called him **insane**. These benmarks are simulating more impossible scenarios in product env. Each benchmark will explain **How insame** it is. 
+Why called `Paranoea` benchmarks? All these benchmarks are from [@ascrutae](https://github.com/ascrutae) suggestions, I called him **insane**. These benmarks are simulating more impossible scenarios in product env. Each benchmark will explain **How insame** it is. 
 
 ### Benchmark-3
 This is the first **Paranoea** benchmarks. The backgroupd story is that, the application costs 80%+ CPU, also 5000tps, and you want to trace it. As I known, nobody or no-company allow the server running under such high load.
