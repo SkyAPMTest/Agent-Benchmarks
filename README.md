@@ -51,4 +51,15 @@ You can see, we wouldn't effect the tps and reponse time either.
 
 [Go to the details of CPU, memory, tps and response time graph](Benchmark-2)
 
-**Again, don't worry about the performance of our agent. Trace your applications as you need.**
+## Paranoea benchmarks
+Why called `Paranoea` benchmarks? All these benchmarks are from @ascrutae suggestions, I called him **insane**. These benmarks are simulating more impossible scenarios in product env. Each benchmark will explain **How insame** it is. 
+
+### Benchmark-3
+This is the first **Paranoea** benchmarks. The backgroupd story is that, the application costs 80%+ CPU, also 5000tps, and you want to trace it. As I known, nobody or no-company allow the server running under such high load.
+
+And thank god, lucky, because of our good design agent core, it survived in such scenario. Let's see the result:
+
+![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-3/contrast_graph.png)
+
+
+**Again and again, the benchmarks proved limitation of agent is even more than you need. So don't worry about the performance of our agent. Trace your applications as you need.**
