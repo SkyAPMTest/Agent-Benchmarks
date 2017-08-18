@@ -38,7 +38,7 @@ This means, even agent costs a little CPU in a high throughputs server, but woul
 
 To be honest, a single instance of most applications is just running in 100-1200 tps, as I known, even in the powerful Chinese telecom system or e-commerce system. So, you **shouldn't have any concern** about performance for using our agent to trace your application.
 
-[Go to the details of CPU, memory, tps and response time graph](Benchmark-1)
+[Go to the details of CPU, memory, tps and response time graph for benchmark-1](Benchmark-1)
 
 ### Benchmark-2
 * [Source codes](https://github.com/sky-walking/Agent-Benchmarks/tree/master/Benchmark-2/example)
@@ -49,7 +49,7 @@ The application is similar with benchmark-1, but we did some adjustments, to mak
 
 You can see, we wouldn't effect the tps and reponse time either. 
 
-[Go to the details of CPU, memory, tps and response time graph](Benchmark-2)
+[Go to the details of CPU, memory, tps and response time graph for benchmark-2](Benchmark-2)
 
 ## Paranoea benchmarks
 Why called `Paranoea` benchmarks? All these benchmarks are from @ascrutae suggestions, I called him **insane**. These benmarks are simulating more impossible scenarios in product env. Each benchmark will explain **How insame** it is. 
@@ -61,5 +61,8 @@ And thank god, lucky, because of our good design agent core, it survived in such
 
 ![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-3/contrast_graph.png)
 
+[Go to the details of CPU, memory, tps and response time graph for benchmark-3](Benchmark-3)
 
-**Again and again, the benchmarks proved limitation of agent is even more than you need. So don't worry about the performance of our agent. Trace your applications as you need.**
+
+
+**Again and again, the benchmarks had proved that, the limitation of agent is even higher than you need. So don't worry about the performance of our agent. Trace your applications as you need.**
