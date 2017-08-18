@@ -64,5 +64,12 @@ And thank god, lucky, because of our good design agent core, it survived in such
 [Go to the details of CPU, memory, tps and response time graph for benchmark-3](Benchmark-3)
 
 
+### Benchmark-4
+This application is hard to say, whether is reality or not. [@ascrutae](https://github.com/ascrutae) said, maybe 5 spans for each transaction is too little, real system may do more. So he make this simulation, which includes 20 spans: 1 SpringMVC, 2 Jedis, 7 Annotation Trace and 10 Mysql. And also keep the tps about 1300. 7 **@Trace** annotation spans and 10 mysql db spans for each transaction are much more than you usually did.  But ascrutae assists to do so... fine... let's find out.
+
+![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-4/contrast_graph.png)
+
+[Go to the details of CPU, memory, tps and response time graph for benchmark-3](Benchmark-4)
+
 
 **Again and again, the benchmarks had proved that, the limitation of agent is even higher than you need. So don't worry about the performance of our agent. Trace your applications as you need.**
