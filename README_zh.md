@@ -28,55 +28,54 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 这里一个常见的基于Spring的应用程序，他包含Spring Boot, Spring MVC，模拟的redis客户端，HikariCP连接池（匹配模拟的mysql客户端）。
 监控这个应用程序，每个事务，探针会抓取5个span(1 Tomcat, 1 SpringMVC, 2 Jedis, 1 Mysql)。
 
+**请注意**：我们这里提到了模拟客户端，之所以我们不使用真正的客户端，是因为，如果这样，服务端性能和网络的波动，会造成应用程序的tps不稳定，从而影响测试结果。如：mysql或redis服务器的配置，网络交换机性能，都会影响客户端性能，而这不是我们的测试目的。所以，我们要避免这种干扰因素。
 
-**Please notice**: we used the **simulate-*-client** to simulate the client lib, instead the real client library, in order to avoid effections of server-side and network performance. 
+**这是一个近乎不可能的高流量应用**
 
-e.g. The network and config of mysql/redis server are effecting the client performance, but this isn't our testing purpose.
-
-**High (nearly impossible) throughputs**
-
-We simulated 500 users to access the application, with 10ms thought time. Because our application is so fast, the result is about more than 5000 transactions per second during the test.
+我们模拟500并发用户，设置思考时间为10ms。而我们将应用性能设计的十分优秀，每秒能满足5000tps。
 
 ![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-1/contrast_graph.png)
 
-The agent increases **10%** CPU cost in a 220%+ CPU cost application, **without needing any sampling mechanism**, to collect 5000+ trace segments per second and send them to our collector through network. Clearly, skywalking agent is a very high efficiency agent. As you known, nearly no single-process application can do this in a x86 server, except for something likes cache(redis)-proxy server. And for tps and response time, the agent effects nearly nothing. 
+大家可以看到，探针进行监控时，针对一个负荷在200%以上的应用，只提高了10%的CPU负荷。并且我们**不需要开启任何采样策略**（注：当然skywalking是支持采样的），所以我们使用每秒要讲5000个trace segment收集并发送到collector上。显然，skywalking探针拥有极高的性能。如大家所知，在一个x86服务器上的单应用实例，不太可能拥有如此之高的吞吐能力，除非，他内部是直接访问类似redis这样的告诉缓存。即使如此，探针对tps和相应时间，也不会造成任何影响。
 
-This means, even agent costs a little CPU in a high throughputs server, but wouldn't effect performance during tracing.
+也就是说，在如此吞吐能力的服务器上，使用探针进行监控，也只是会消耗多一点点CPU，并不会影响应用性能。
 
-To be honest, a single instance of most applications is just running in 100-1200 tps, as I known, even in the powerful Chinese telecom system or e-commerce system. So, you **shouldn't have any concern** about performance for using our agent to trace your application.
+老实说，一个单实例的应用，正常的tps都在100到1200之间。据我所知，即使是中国强大的电信和电商系统，单实例处理能力，也不过如此。所以，你真的**不必担心**探针的性能问题。
 
-[Go to the details of CPU, memory, tps and response time graph for benchmark-1](Benchmark-1)
+[查看benchmark-1详细测试数据](Benchmark-1)
 
-### Benchmark-2
-* [Source codes](https://github.com/sky-walking/Agent-Benchmarks/tree/master/Benchmark-2/example)
+### 用例-2
+* [程序源码](https://github.com/sky-walking/Agent-Benchmarks/tree/master/Benchmark-2/example)
 
-The application is similar with benchmark-1, but we did some adjustments, to make it more reality. As I said, benchmark-1 is just for proving of limitation. So, we simulated 300 users to access the application, and keep the tps near 1000, which is also **very high**. The CPU cost clearly is less than before, which is only **6%**.
+这个应用和用例-1类似，但是我们做了一些调整，让他更像真实的应用。如我所说，用例-1只是一种证明极限的方法（后面还有更变态的用例☺）。这次，我们模拟300并发用户，将tps稳定在1000，当然，这也是很高的吞吐量了。CPU消耗会比之前明显降低，仅仅消耗**6%**。
 
 ![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-2/contrast_graph.png)
 
-You can see, we wouldn't effect the tps and reponse time either. 
+通过上图，你可以看到，探针对TPS和相应时间，依然没有影响
 
-[Go to the details of CPU, memory, tps and response time graph for benchmark-2](Benchmark-2)
+[查看benchmark-2详细测试数据](Benchmark-2)
 
-## Paranoea benchmarks
-Why called `Paranoea` benchmarks? All these benchmarks are from [@ascrutae](https://github.com/ascrutae) suggestions, I called him **insane**. These benmarks are simulating more impossible scenarios in product env. Each benchmark will explain **How insame** it is. 
+## 编制狂用例
+我为什么称这些用例是`偏执狂`或`疯狂`用例？首先，当[@ascrutae](https://github.com/ascrutae)希望增加这些用例时，我认为他疯了... 这些用例会模拟一些更加不可能出现在生产环境中的应用。在每一个用力中，我会详细解释，为什么。
 
-### Benchmark-3
-This is the first **Paranoea** benchmarks. The backgroupd story is that, the application costs 80%+ CPU, also 5000tps, and you want to trace it. As I known, nobody or no-company allow the server running under such high load.
+### 用例-3
+这里第一个**疯狂**的用例。背景如下：一个5000tps的应用，CPU消耗已经在80%以上，但是你依然想追踪他，虽然据我所知，没有人或者公司会允许负荷这么高的服务器来作为生产环境。
 
-And thank god, lucky, because of our good design agent core, it survived in such scenario. Let's see the result:
+但是，我们依然做了这个测试。谢天谢地，探针“幸运的”通过了测试。当然实际上，是得益于优良的探针内核设计。结果如下：
 
 ![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-3/contrast_graph.png)
 
-[Go to the details of CPU, memory, tps and response time graph for benchmark-3](Benchmark-3)
+[查看benchmark-3详细测试数据](Benchmark-3)
 
 
-### Benchmark-4
-This application is hard to say, whether is reality or not. [@ascrutae](https://github.com/ascrutae) said, maybe 5 spans for each transaction is too little, real system may do more. So he make this simulation, which includes 20 spans: 1 SpringMVC, 2 Jedis, 7 Annotation Trace and 10 Mysql. And also keep the tps about 1300. 7 **@Trace** annotation spans and 10 mysql db spans for each transaction are much more than you usually did.  But ascrutae assists to do so... fine... let's find out.
+### 用例-4
+这个用例很难说，是不是真实还是偏执。[@ascrutae](https://github.com/ascrutae)说，一个事务是包含5个span太少了，真实的系统可能更多。所以他决定要将一个事务包含的span提高到20个，包含1 SpringMVC, 2 Jedis, 7 Annotation Trace and 10 Mysql，同时tps要保持在1300（即：高于绝大多数的应用水平）。一个事务使用**@Trace**标注追踪7个本地方法，同时包含10次数据库访问，这肯定超过绝大多数系统的使用场景，但是ascrutae坚持要做这个测试，那么，让我们看看结果吧：
+
 
 ![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-4/contrast_graph.png)
 
-[Go to the details of CPU, memory, tps and response time graph for benchmark-3](Benchmark-4)
+[查看benchmark-4详细测试数据](Benchmark-4)
 
 
+**如此之多的疯狂的测试场景，一次次的证明，skywalking探针提供的性能，远远超过你的应用系统的吞吐量。所以，请不要担心，在你需要的时候，开始监控追踪你的应用系统吧。**
 **Again and again, the benchmarks had proved that, the limitation of agent is even higher than you need. So don't worry about the performance of our agent. Trace your applications as you need.**
