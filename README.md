@@ -71,7 +71,7 @@ This application is hard to say, whether is reality or not. [@ascrutae](https://
 
 ![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-4/contrast_graph.png)
 
-[Go to the details of CPU, memory, tps and response time graph for benchmark-3](Benchmark-4)
+[Go to the details of CPU, memory, tps and response time graph for benchmark-4](Benchmark-4)
 
 
 **Again and again, the benchmarks had proved that, the limitation of agent is even higher than you need. So don't worry about the performance of our agent. Trace your applications as you need.**
