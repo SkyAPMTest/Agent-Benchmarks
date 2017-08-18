@@ -1,4 +1,4 @@
-# Graphs of benchmark-1 performance test
+# Graphs of benchmark-2 performance test
 
 ## CPU and Memory
 * Baseline
