@@ -1,7 +1,7 @@
 # 探针性能揭秘
 [English](README.md)
 
-很多[skywalking](https://github.com/wu-sheng/sky-walking)探针的使用者，都会对我们的自动探针性能存在顾虑。
+很多[skywalking](https://github.com/OpenSkywalking/skywalking)探针的使用者，都会对我们的自动探针性能存在顾虑。
 在这个仓库中，我们新建了多个应用程序，用于模拟不同的应用程序，来检测我们探针的性能。
 
 下面所有的测试，将基于**skywalking 3.2 java探针**。我们使用jmeter进行压力测试，测试应用程序部署在一台物理机上（注：Collector和jmeter不在此机器上）。
@@ -23,7 +23,7 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 
 ## 测试用例
 ### 用例-1
-* [程序源码](https://github.com/sky-walking/Agent-Benchmarks/tree/master/Benchmark-1/example)
+* [程序源码](https://github.com/SkywalkingTest/Agent-Benchmarks/tree/master/Benchmark-1/example)
 
 这里一个常见的基于Spring的应用程序，他包含Spring Boot, Spring MVC，模拟的redis客户端，HikariCP连接池（匹配模拟的mysql客户端）。
 监控这个应用程序，每个事务，探针会抓取5个span(1 Tomcat, 1 SpringMVC, 2 Jedis, 1 Mysql)。
@@ -34,7 +34,7 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 
 我们模拟500并发用户，设置思考时间为10ms。而我们将应用性能设计的十分优秀，每秒能满足5000tps。
 
-![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-1/contrast_graph.png)
+![Metrics data](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-1/contrast_graph.png)
 
 大家可以看到，探针进行监控时，针对一个负荷在200%以上的应用，只提高了10%的CPU负荷。并且我们**不需要开启任何采样策略**（注：当然skywalking是支持采样的），所以我们使用每秒要将超过5000个trace segment收集并发送到collector上。显然，skywalking探针拥有极高的性能。如大家所知，在一个x86服务器上的单应用实例，不太可能拥有如此之高的吞吐能力，除非，他内部是直接访问类似redis这样的高速缓存。即使如此，探针对tps和相应时间，也不会造成任何影响。
 
@@ -47,11 +47,11 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 我详细，到此，应该可以打消各位对于性能的顾虑。但是如果你依然好奇，skywalking的探针性能极限在哪里？你可以继续阅读下面的测试用例。
 
 ### 用例-2
-* [程序源码](https://github.com/sky-walking/Agent-Benchmarks/tree/master/Benchmark-2/example)
+* [程序源码](https://github.com/SkywalkingTest/Agent-Benchmarks/tree/master/Benchmark-2/example)
 
 这个应用和用例-1类似，但是我们做了一些调整，让他更像真实的应用。如我所说，用例-1只是一种证明极限的方法（后面还有更变态的用例☺）。这次，我们模拟300并发用户，将tps稳定在1000，当然，这也是很高的吞吐量了。CPU消耗会比之前明显降低，仅仅消耗**6%**。
 
-![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-2/contrast_graph.png)
+![Metrics data](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-2/contrast_graph.png)
 
 通过上图，你可以看到，探针对TPS和相应时间，依然没有影响
 
@@ -65,7 +65,7 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 
 但是，我们依然做了这个测试。谢天谢地，探针“幸运的”通过了测试。当然实际上，当然是得益于优良的探针内核设计😎，和运气无关😄。结果如下：
 
-![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-3/contrast_graph.png)
+![Metrics data](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-3/contrast_graph.png)
 
 [查看benchmark-3详细测试数据](Benchmark-3)
 
@@ -74,7 +74,7 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 这个用例很难说，是真实还是偏执。[@ascrutae](https://github.com/ascrutae)说，一个事务是包含5个span太少了，真实的系统可能更多。所以他决定要将一个事务包含的span提高到20个，包含1 SpringMVC, 2 Jedis, 7 Annotation Trace and 10 Mysql，同时tps要保持在1300（即：高于绝大多数的应用水平）。一个事务使用**@Trace**标注追踪7个本地方法，同时包含10次数据库访问，这肯定超过绝大多数系统的使用场景，但是ascrutae坚持要做这个测试，那么，让我们看看结果吧：
 
 
-![Metrics data](https://sky-walking.github.io/page-resources/3.2/performance-results/benchmark-4/contrast_graph.png)
+![Metrics data](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-4/contrast_graph.png)
 
 [查看benchmark-4详细测试数据](Benchmark-4)
 
