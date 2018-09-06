@@ -80,3 +80,7 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 
 
 **如此之多的疯狂的测试场景，一次次的证明，skywalking探针提供的性能，远远超过你的应用系统的吞吐量。所以，请不要担心，在这个分布式横行的年代，让你的系统被监控起来吧。**
+
+## 社区反馈的测试报告
+
+1. [3.2.6 探针+后端性能测试报告](https://github.com/apache/incubator-skywalking/issues/1596#issuecomment-418946050) from [hepyu](https://github.com/hepyu)
