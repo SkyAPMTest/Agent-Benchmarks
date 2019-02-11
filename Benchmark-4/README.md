@@ -3,28 +3,28 @@
 ## CPU and Memory
 * Baseline
 
-![CPU and Memory](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-4/baseline/cpu-memory-baseline.png)
+![CPU and Memory](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-4/baseline/cpu-memory-baseline.png)
 
 * With agent
 
-![CPU and Memory](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-4/agent/cpu-memory-agent.png)
+![CPU and Memory](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-4/agent/cpu-memory-agent.png)
 
 
 ## Transaction per second
 * Baseline
 
-![tps](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-4/baseline/tps-baseline.png)
+![tps](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-4/baseline/tps-baseline.png)
 
 * With agent
 
-![tps](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-4/agent/tps-agent.png)
+![tps](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-4/agent/tps-agent.png)
 
 
 ## Reponse time
 * Baseline
 
-![response time](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-4/baseline/responsetime-baseline.png)
+![response time](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-4/baseline/responsetime-baseline.png)
 
 * With agent
 
-![response time](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-4/agent/responsetime-agent.png)
+![response time](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-4/agent/responsetime-agent.png)
