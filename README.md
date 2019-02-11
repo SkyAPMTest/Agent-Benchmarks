@@ -32,7 +32,7 @@ e.g. The network and config of mysql/redis server are effecting the client perfo
 
 We simulated 500 users to access the application, with 10ms thought time. Because our application is so fast, the result is about more than 5000 transactions per second during the test.
 
-![Metrics data](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-1/contrast_graph.png)
+![Metrics data](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-1/contrast_graph.png)
 
 The agent increases **10%** CPU cost in a 220%+ CPU cost application, **without needing any sampling mechanism**, to collect 5000+ trace segments per second and send them to our collector through network. Clearly, skywalking agent is a very high efficiency agent. As you known, nearly no single-process application can do this in a x86 server, except for something likes cache(redis)-proxy server. And for tps and response time, the agent effects nearly nothing. 
 
@@ -47,7 +47,7 @@ To be honest, a single instance of most applications is just running in 100-1200
 
 The application is similar with benchmark-1, but we did some adjustments, to make it more reality. As I said, benchmark-1 is just for proving of limitation. So, we simulated 300 users to access the application, and keep the tps near 1000, which is also **very high**. The CPU cost clearly is less than before, which is only **6%**.
 
-![Metrics data](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-2/contrast_graph.png)
+![Metrics data](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-2/contrast_graph.png)
 
 You can see, we wouldn't effect the tps and reponse time either. 
 
@@ -61,7 +61,7 @@ This is the first **Paranoea** benchmarks. The backgroupd story is that, the app
 
 And thank god, lucky, because of our good design agent core, it survived in such scenario. Let's see the result:
 
-![Metrics data](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-3/contrast_graph.png)
+![Metrics data](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-3/contrast_graph.png)
 
 [Go to the details of CPU, memory, tps and response time graph for benchmark-3](Benchmark-3)
 
@@ -69,7 +69,7 @@ And thank god, lucky, because of our good design agent core, it survived in such
 ### Benchmark-4
 This application is hard to say, whether is reality or not. [@ascrutae](https://github.com/ascrutae) said, maybe 5 spans for each transaction is too little, real system may do more. So he make this simulation, which includes 20 spans: 1 SpringMVC, 2 Jedis, 7 Annotation Trace and 10 Mysql. And also keep the tps about 1300. 7 **@Trace** annotation spans and 10 mysql db spans for each transaction are much more than you usually did.  But ascrutae assists to do so... fine... let's find out.
 
-![Metrics data](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-4/contrast_graph.png)
+![Metrics data](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-4/contrast_graph.png)
 
 [Go to the details of CPU, memory, tps and response time graph for benchmark-4](Benchmark-4)
 
