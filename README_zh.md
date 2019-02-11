@@ -34,7 +34,7 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 
 我们模拟500并发用户，设置思考时间为10ms。而我们将应用性能设计的十分优秀，每秒能满足5000tps。
 
-![Metrics data](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-1/contrast_graph.png)
+![Metrics data](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-1/contrast_graph.png)
 
 大家可以看到，探针进行监控时，针对一个负荷在200%以上的应用，只提高了10%的CPU负荷。并且我们**不需要开启任何采样策略**（注：当然skywalking是支持采样的），所以我们使用每秒要将超过5000个trace segment收集并发送到collector上。显然，skywalking探针拥有极高的性能。如大家所知，在一个x86服务器上的单应用实例，不太可能拥有如此之高的吞吐能力，除非，他内部是直接访问类似redis这样的高速缓存。即使如此，探针对tps和相应时间，也不会造成任何影响。
 
@@ -51,7 +51,7 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 
 这个应用和用例-1类似，但是我们做了一些调整，让他更像真实的应用。如我所说，用例-1只是一种证明极限的方法（后面还有更变态的用例☺）。这次，我们模拟300并发用户，将tps稳定在1000，当然，这也是很高的吞吐量了。CPU消耗会比之前明显降低，仅仅消耗**6%**。
 
-![Metrics data](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-2/contrast_graph.png)
+![Metrics data](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-2/contrast_graph.png)
 
 通过上图，你可以看到，探针对TPS和相应时间，依然没有影响
 
@@ -65,7 +65,7 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 
 但是，我们依然做了这个测试。谢天谢地，探针“幸运的”通过了测试。当然实际上，当然是得益于优良的探针内核设计😎，和运气无关😄。结果如下：
 
-![Metrics data](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-3/contrast_graph.png)
+![Metrics data](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-3/contrast_graph.png)
 
 [查看benchmark-3详细测试数据](Benchmark-3)
 
@@ -74,7 +74,7 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 这个用例很难说，是真实还是偏执。[@ascrutae](https://github.com/ascrutae)说，一个事务是包含5个span太少了，真实的系统可能更多。所以他决定要将一个事务包含的span提高到20个，包含1 SpringMVC, 2 Jedis, 7 Annotation Trace and 10 Mysql，同时tps要保持在1300（即：高于绝大多数的应用水平）。一个事务使用**@Trace**标注追踪7个本地方法，同时包含10次数据库访问，这肯定超过绝大多数系统的使用场景，但是ascrutae坚持要做这个测试，那么，让我们看看结果吧：
 
 
-![Metrics data](https://skywalkingtest.github.io/page-resources/3.2/performance-results/benchmark-4/contrast_graph.png)
+![Metrics data](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-4/contrast_graph.png)
 
 [查看benchmark-4详细测试数据](Benchmark-4)
 
