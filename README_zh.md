@@ -36,7 +36,7 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 
 ![Metrics data](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-1/contrast_graph.png)
 
-大家可以看到，探针进行监控时，针对一个负荷在200%以上的应用，只提高了10%的CPU负荷。并且我们**不需要开启任何采样策略**（注：当然skywalking是支持采样的），所以我们使用每秒要将超过5000个trace segment收集并发送到collector上。显然，skywalking探针拥有极高的性能。如大家所知，在一个x86服务器上的单应用实例，不太可能拥有如此之高的吞吐能力，除非，他内部是直接访问类似redis这样的高速缓存。即使如此，探针对tps和相应时间，也不会造成任何影响。
+大家可以看到，探针进行监控时，针对一个负荷在200%以上的应用，只提高了10%的CPU负荷。并且我们**不需要开启任何采样策略**（注：当然skywalking是支持采样的），所以我们使用每秒要将超过5000个trace segment收集并发送到collector上。显然，skywalking探针拥有极高的性能。如大家所知，在一个x86服务器上的单应用实例，不太可能拥有如此之高的吞吐能力，除非，他内部是直接访问类似redis这样的高速缓存。即使如此，探针对tps和响应时间，也不会造成任何影响。
 
 也就是说，在超高吞吐能力的服务器上，使用探针进行监控，也只是会消耗多一点点CPU，并不会影响应用性能。
 
@@ -53,7 +53,7 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 
 ![Metrics data](https://skyapmtest.github.io/page-resources/3.2/performance-results/benchmark-2/contrast_graph.png)
 
-通过上图，你可以看到，探针对TPS和相应时间，依然没有影响
+通过上图，你可以看到，探针对TPS和响应时间，依然没有影响
 
 [查看benchmark-2详细测试数据](Benchmark-2)
 
