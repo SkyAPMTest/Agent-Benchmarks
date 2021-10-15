@@ -44,7 +44,7 @@ Agent性能消耗 = `带agent压测结果` - `基线`
 
 [查看benchmark-1详细测试数据](Benchmark-1)
 
-我详细，到此，应该可以打消各位对于性能的顾虑。但是如果你依然好奇，skywalking的探针性能极限在哪里？你可以继续阅读下面的测试用例。
+我相信，到此，应该可以打消各位对于性能的顾虑。但是如果你依然好奇，skywalking的探针性能极限在哪里？你可以继续阅读下面的测试用例。
 
 ### 用例-2
 * [程序源码](https://github.com/SkywalkingTest/Agent-Benchmarks/tree/master/Benchmark-2/example)
